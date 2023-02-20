@@ -2,7 +2,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 import soundfile as sf
 
-
 # creem i guardem senyal sinusoidal amb següents parametres:
 
 T= 2.5                               # Durada de T segons
