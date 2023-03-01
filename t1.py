@@ -118,3 +118,64 @@ plt.show()
 
 
 ### Exercici 3 ###
+
+T= 2.5                               
+fm=8000                             
+fx=440                               
+A=4                                  
+pi=np.pi                           
+L = int(fm * T)                     
+Tm=1/fm                              
+t=Tm*np.arange(L)                   
+x = A * np.cos(2 * pi * fx * t)     
+
+N=5000           
+X=fft(x[0 : Ls], N)
+k=np.arange(N)
+plt.figure(6)                         
+dB = 20*np.log10(np.abs(X)/max(np.abs(X)))
+fk = k[0:N//2+1]*fm/N
+plt.subplot(211)
+plt.plot(fk,dB[0:N//2+1])
+plt.title(f'Transformada del senyal de Ls={Ls} mostres amb DFT de N={N}')   
+plt.ylabel('dB')
+plt.subplot(212)
+plt.plot(fk,np.unwrap(np.angle(X[0:N//2+1])) )
+plt.xlabel('Hz')    
+plt.ylabel('$\phi_x[k]$')
+plt.savefig('ex3_TF.png')      
+plt.show()
+
+
+### Exercici 4 ###
+x_r, fm = sf.read('luzbel44.wav') # mostres, fm freq mostratge
+T = 0.025
+L = int(fm * T)                     
+Tm=1/fm                            
+t=Tm*np.arange(L)
+plt.figure(7)
+plt.plot(t[0:L],x_r[0:L])
+plt.xlabel('t en segons')
+plt.title('25ms')
+plt.savefig('ex4_representacio.png')
+plt.show() 
+
+N=5000           
+X=fft(x_r[0 : L], N)
+k=np.arange(N)
+plt.figure(7)                         
+dB = 20*np.log10(np.abs(X)/max(np.abs(X)))
+fk = k[0:N//2+1]*fm/N
+plt.subplot(211)
+plt.plot(fk,dB[0:N//2+1])
+plt.title(f'Transformada del senyal de Ls={L} mostres amb DFT de N={N}')   
+plt.ylabel('dB')
+plt.subplot(212)
+plt.plot(fk,np.unwrap(np.angle(X[0:N//2+1])) )
+plt.xlabel('Hz')    
+plt.ylabel('$\phi_x[k]$')
+plt.savefig('ex4_TF.png')      
+plt.show()
+
+print(fm)
+print(len(x_r))

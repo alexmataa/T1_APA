@@ -106,39 +106,76 @@ Proves i exercicis a fer i entregar
 1. Reprodueix l'exemple fent servir diferents freqüències per la sinusoide. Al menys considera $f_x = 4$ kHz, a banda d'una
     freqüència pròpia en el marge audible. Comenta els resultats.
 
+    <b>4 kHz</b>
+
+    <img src="5_periodes_4khz.png" width="480" align="center">
+
+    <img src="TF_4khz.png" width="480" align="center">
+
+    <b>1 kHz</b>
+
+    <img src="5_periodes_1khz.png" width="480" align="center">
+
+    <img src="TF_1khz.png" width="480" align="center">
+
+    Comprovem que com més alta sigui la freqüència, menys resolució i detalls tenim. Això és degut a la freqüència de mostratge. Si aquesta fos més alta, tindriem una corba perfecte.
+
 2. Modifica el programa per considerar com a senyal a analitzar el senyal del fitxer wav que has creat 
     (`x_r, fm = sf.read('nom_fitxer.wav')`).
 
     - Insereix a continuació una gràfica que mostri 5 períodes del senyal i la seva transformada.
 
-    - Explica el resultat del apartat anterior.
+    <img src="ex2_4khz.png" width="480" align="center">
+
+    <img src="ex2_TF_4khz.png" width="480" align="center">
 
 3. Modifica el programa per representar el mòdul de la Transformada de Fourier en dB i l'eix d'abscisses en el marge de
     $0$ a $f_m/2$ en Hz.
 
     - Comprova que la mesura de freqüència es correspon amb la freqüència de la sinusoide que has fet servir.
+  
+    <img src="ex3_TF.png" width="480" align="center">
 
-    - Com pots identificar l'amplitud de la sinusoide a partir de la representació de la transformada?
-      Comprova-ho amb el senyal generat.
+    - Com pots identificar l'amplitud de la sinusoide a partir de la representació de la transformada? Comprova-ho amb el senyal generat.
 
-> NOTES:
->
-> - Per representar en dB has de fer servir la fórmula següent:
->
-> $X_{dB}(f) = 20\log_{10}\left(\frac{\left|X(f)\right|}{\max(\left|X(f)\right|}\right)$
->
-> - La relació entre els valors de l'índex k i la freqüència en Hz és:
->
-> $f_k = \frac{k}{N} f_m$
+        Podem observar que el lòbul amb major amplitud és el que correspon a 440Hz, la freqüència del senyal analitzat.
 
-4. Tria un fitxer d'àudio en format wav i mono (el pots aconseguir si en tens amb altres formats amb el programa Audacity). 
+    > NOTES:
+    >
+    > - Per representar en dB has de fer servir la fórmula següent:
+    >
+    > $X_{dB}(f) = 20\log_{10}\left(\frac{\left|X(f)\right|}{\max(\left|X(f)\right|}\right)$
+    >
+    > - La relació entre els valors de l'índex k i la freqüència en Hz és:
+    >
+    > $f_k = \frac{k}{N} f_m$
+
+4. Tria un fitxer d'àudio en format wav i mono (el pots aconseguir si en tens amb altres formats amb el programa Audacity).
     Llegeix el fitxer d'àudio i comprova:
-
+    ```python
+    x_r, fm = sf.read('luzbel44.wav') # mostres, fm freq mostratge
+    print(fm)
+    print(len(x_r))
+    ```
     - Freqüència de mostratge.
+        
+        44100 Hz
+
     - Nombre de mostres de senyal.
+
+        95091 mostres
+
     - Tria un segment de senyal de 25ms i insereix una gráfica amb la seva evolució temporal.
+
+        <img src="ex4_representacio.png" width="480" align="center">
+
     - Representa la seva transformada en dB en funció de la freqüència, en el marge $0\le f\le f_m/2$.
+
+        <img src="ex4_TF.png" width="480" align="center">
+
     - Quines son les freqüències més importants del segment triat?
+
+        Les freqüències més importants les trobem entre els 100Hz i 7500kHz, cosa que té sentit, ja que es tracta d'un fitxer d'àudio d'una veu.
 
 
 Entrega
