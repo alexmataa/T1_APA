@@ -152,11 +152,13 @@ Proves i exercicis a fer i entregar
 
 4. Tria un fitxer d'àudio en format wav i mono (el pots aconseguir si en tens amb altres formats amb el programa Audacity).
     Llegeix el fitxer d'àudio i comprova:
+    
     ```python
     x_r, fm = sf.read('luzbel44.wav') # mostres, fm freq mostratge
     print(fm)
     print(len(x_r))
     ```
+    
     - Freqüència de mostratge.
         
         44100 Hz
